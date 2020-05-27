@@ -1,4 +1,5 @@
 # Animated Splash Screen
+Check it out at [Pub.Dev](https://pub.dev/packages/animated_splash_screen)
 
 ## Do it your way
 
