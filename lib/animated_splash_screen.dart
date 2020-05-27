@@ -27,7 +27,6 @@ class AnimatedSplashScreen extends StatefulWidget {
   /// It can be string for [Image.asserts], normal [Widget] or you can user tags
   /// to choose which one you image type, for example:
   /// * '[n]www.my-site.com/my-image.png' to [Image.network]
-  /// * '[i]Icons.my_icon' to [Icon] widget
   final dynamic splash;
   final int duration;
   final Curve curve;
