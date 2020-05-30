@@ -1,6 +1,6 @@
 name: animated_splash_screen
 description: The easiest way to create your animated splash screen in a fully customizable way.
-version: 1.0.0
+version: 1.0.0+1
 homepage: https://github.com/clean-code-dev/animated_splash_screen
 
 environment:

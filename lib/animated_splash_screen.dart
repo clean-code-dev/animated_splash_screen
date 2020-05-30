@@ -152,8 +152,9 @@ class _AnimatedSplashScreenState extends State<AnimatedSplashScreen>
 
   @override
   void dispose() {
-    super.dispose();
     _animationController.reset();
+    _animationController.dispose();
+    super.dispose();
   }
 
   navigator(screen) {
