@@ -172,7 +172,7 @@ class _AnimatedSplashScreenState extends State<AnimatedSplashScreen>
     return getTransition(
         child: main(
             child: SizedBox(
-                height: size,
+                height: MediaQuery.of(context).size.height,
                 child: w.splash is String
                     ? <Widget>() {
                         if (w.splash.toString().contains('[n]'))
@@ -229,6 +229,10 @@ class _AnimatedSplashScreenState extends State<AnimatedSplashScreen>
   Widget build(BuildContext context) {
     _context = context;
 
-    return Scaffold(backgroundColor: w.backgroundColor, body: getSplash());
+    return Scaffold(
+      resizeToAvoidBottomPadding: false,
+      backgroundColor: w.backgroundColor,
+      body: getSplash()
+    );
   }
 }
