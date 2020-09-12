@@ -1,4 +1,8 @@
-## [ 1.0.0+1] - Fix Bugs
+## [1.0.1] - Add features
+* Editable icon splash size;
+* Editable duration of animation;
+
+## [1.0.0+1] - Fix Bugs
 
 * Fix error in dispose method.
 

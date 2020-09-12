@@ -18,6 +18,12 @@ Check it out at [Pub.Dev](https://pub.dev/packages/animated_splash_screen)
 ### Or just change PageTransition and/or SplashTransition
 ![ezgif com-video-to-gif (5)](https://user-images.githubusercontent.com/22732544/83060336-a75db780-a031-11ea-99d3-856fa9326b28.gif)
 
+## Help Maintenance
+
+I've been maintaining quite many repos these days and burning out slowly. If you could help me cheer up, buying me a cup of coffee will make my life really happy and get much energy out of it.
+
+<a href="https://www.buymeacoffee.com/RtrHv1C" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/purple_img.png" alt="Buy Me A Coffee" style="height: auto !important;width: auto !important;" ></a>
+
 ## Getting Started
 To use is simple, just do this:
 
@@ -87,9 +93,3 @@ Here you can do something that will return your next screen, ex:
       splashTransition: SplashTransition.rotationTransition,
       pageTransitionType: PageTransitionType.scale,
     )
-    
-## Help Maintenance
-
-I've been maintaining quite many repos these days and burning out slowly. If you could help me cheer up, buying me a cup of coffee will make my life really happy and get much energy out of it.
-
-<a href="https://www.buymeacoffee.com/RtrHv1C" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/purple_img.png" alt="Buy Me A Coffee" style="height: auto !important;width: auto !important;" ></a>

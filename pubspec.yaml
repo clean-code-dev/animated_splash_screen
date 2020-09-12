@@ -1,6 +1,6 @@
 name: animated_splash_screen
 description: The easiest way to create your animated splash screen in a fully customizable way.
-version: 1.0.0+1
+version: 1.0.1
 homepage: https://github.com/clean-code-dev/animated_splash_screen
 
 environment:
@@ -9,7 +9,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  page_transition: ^1.1.5
+  page_transition: ^1.1.6
 
 dev_dependencies:
   flutter_test:
