@@ -74,7 +74,7 @@ class AnimatedSplashScreen extends StatefulWidget {
     return AnimatedSplashScreen._internal(
         backgroundColor: backgroundColor,
         animationDuration: animationDuration,
-        transitionType: pageTransitionType ?? PageTransitionType.downToUp,
+        transitionType: pageTransitionType ?? PageTransitionType.bottomToTop,
         splashTransition: splashTransition ?? SplashTransition.fadeTransition,
         splashIconSize: splashIconSize,
         customAnimation: customTween,
@@ -102,7 +102,7 @@ class AnimatedSplashScreen extends StatefulWidget {
     return AnimatedSplashScreen._internal(
         type: _splashType.backgroundScreenReturn,
         animationDuration: animationDuration,
-        transitionType: pageTransitionType ?? PageTransitionType.downToUp,
+        transitionType: pageTransitionType ?? PageTransitionType.bottomToTop,
         splashTransition: splashTransition ?? SplashTransition.fadeTransition,
         backgroundColor: backgroundColor,
         splashIconSize: splashIconSize,
