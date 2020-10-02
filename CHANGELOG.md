@@ -1,3 +1,6 @@
+## [1.0.1+1] - Fix
+* Fix "Pass static analysis" issues
+
 ## [1.0.1] - Add features
 * Editable icon splash size;
 * Editable duration of animation;
