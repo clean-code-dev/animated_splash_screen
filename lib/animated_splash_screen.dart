@@ -47,6 +47,7 @@ class AnimatedSplashScreen extends StatefulWidget {
   final dynamic splash;
 
   /// Time in milliseconds after splash animation to jump to next screen
+  /// Default is [milliseconds: 2500], minimum is [milliseconds: 100]
   final int duration;
 
   /// Curve of splash animation
@@ -194,8 +195,7 @@ class _AnimatedSplashScreenState extends State<AnimatedSplashScreen>
   }
 
   navigator(screen) {
-    Future.delayed(
-            Duration(milliseconds: w.duration < 1000 ? 2000 : w.duration))
+    Future.delayed(Duration(milliseconds: w.duration < 100 ? 100 : w.duration))
         .then((_) {
       try {
         Navigator.of(_context).pushReplacement(
