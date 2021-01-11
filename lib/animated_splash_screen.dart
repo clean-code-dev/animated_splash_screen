@@ -41,6 +41,11 @@ class AnimatedSplashScreen extends StatefulWidget {
   /// If icon in splash need stay inside [Center] widget
   final bool centered;
 
+  /// If you want to implement the navigation to the next page yourself.
+  /// By default is [false], the widget will call Navigator.of(_context).pushReplacement()
+  /// using PageTransition with [transictionType] after [duration] to [nextScreen]
+  final bool disableNavigation;
+
   /// It can be string for [Image.asserts], normal [Widget] or you can user tags
   /// to choose which one you image type, for example:
   /// * '[n]www.my-site.com/my-image.png' to [Image.network]
@@ -68,6 +73,7 @@ class AnimatedSplashScreen extends StatefulWidget {
       Color backgroundColor = Colors.white,
       Animatable customTween,
       bool centered = true,
+      bool disableNavigation = false,
       SplashTransition splashTransition,
       PageTransitionType pageTransitionType,
       Duration animationDuration,
@@ -82,6 +88,7 @@ class AnimatedSplashScreen extends StatefulWidget {
         function: function,
         duration: duration,
         centered: centered,
+        disableNavigation: disableNavigation,
         splash: splash,
         type: _splashType.simpleSplash,
         nextScreen: nextScreen,
@@ -91,6 +98,7 @@ class AnimatedSplashScreen extends StatefulWidget {
   factory AnimatedSplashScreen.withScreenFunction(
       {Curve curve = Curves.easeInCirc,
       bool centered = true,
+      bool disableNavigation = false,
       int duration = 2500,
       @required dynamic splash,
       @required Future<Widget> Function() screenFunction,
@@ -111,6 +119,7 @@ class AnimatedSplashScreen extends StatefulWidget {
         function: screenFunction,
         duration: duration,
         centered: centered,
+        disableNavigation: disableNavigation,
         nextScreen: null,
         splash: splash,
         curve: curve);
@@ -127,6 +136,7 @@ class AnimatedSplashScreen extends StatefulWidget {
     @required this.function,
     @required this.duration,
     @required this.centered,
+    @required this.disableNavigation,
     @required this.splash,
     @required this.curve,
     @required this.type,
@@ -183,8 +193,7 @@ class _AnimatedSplashScreenState extends State<AnimatedSplashScreen>
   doTransition() async {
     if (w.type == _splashType.backgroundScreenReturn)
       navigator(await w.function());
-    else
-      navigator(w.nextScreen);
+    else if (!w.disableNavigation) navigator(w.nextScreen);
   }
 
   @override
