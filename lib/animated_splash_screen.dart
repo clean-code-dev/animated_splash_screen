@@ -9,6 +9,7 @@ enum SplashTransition {
   slideTransition,
   scaleTransition,
   rotationTransition,
+
   sizeTransition,
   fadeTransition,
   decoratedBoxTransition
@@ -23,17 +24,17 @@ class AnimatedSplashScreen extends StatefulWidget {
 
   /// Only required case use [AnimatedSplashScreen.withScreenFunction]
   /// here you pass your function that need called before to jump to next screen
-  final Future Function() function;
+  final Future Function()? function;
 
   /// Custom animation to icon of splash
-  final Animatable customAnimation;
+  final Animatable? customAnimation;
 
   /// Background color
   final Color backgroundColor;
 
   /// Only required in default construct, here you pass your widget that will be
   /// browsed
-  final Widget nextScreen;
+  final Widget? nextScreen;
 
   /// Type of AnimatedSplashScreen
   final _splashType type;
@@ -59,25 +60,25 @@ class AnimatedSplashScreen extends StatefulWidget {
   final Curve curve;
 
   /// Splash animation duration, default is [milliseconds: 800]
-  final Duration animationDuration;
+  final Duration? animationDuration;
 
   /// Icon in splash screen size
-  final double splashIconSize;
+  final double? splashIconSize;
 
   factory AnimatedSplashScreen(
       {Curve curve = Curves.easeInCirc,
-      Future Function() function,
+      Future Function()? function,
       int duration = 2500,
-      @required dynamic splash,
-      @required Widget nextScreen,
+      required dynamic splash,
+      required Widget nextScreen,
       Color backgroundColor = Colors.white,
-      Animatable customTween,
+      Animatable? customTween,
       bool centered = true,
       bool disableNavigation = false,
-      SplashTransition splashTransition,
-      PageTransitionType pageTransitionType,
-      Duration animationDuration,
-      double splashIconSize}) {
+      SplashTransition? splashTransition,
+      PageTransitionType? pageTransitionType,
+      Duration? animationDuration,
+      double? splashIconSize}) {
     return AnimatedSplashScreen._internal(
         backgroundColor: backgroundColor,
         animationDuration: animationDuration,
@@ -100,14 +101,14 @@ class AnimatedSplashScreen extends StatefulWidget {
       bool centered = true,
       bool disableNavigation = false,
       int duration = 2500,
-      @required dynamic splash,
-      @required Future<Widget> Function() screenFunction,
-      Animatable customTween,
+      required dynamic splash,
+      required Future<Widget> Function() screenFunction,
+      Animatable? customTween,
       Color backgroundColor = Colors.white,
-      SplashTransition splashTransition,
-      PageTransitionType pageTransitionType,
-      Duration animationDuration,
-      double splashIconSize}) {
+      SplashTransition? splashTransition,
+      PageTransitionType? pageTransitionType,
+      Duration? animationDuration,
+      double? splashIconSize}) {
     return AnimatedSplashScreen._internal(
         type: _splashType.backgroundScreenReturn,
         animationDuration: animationDuration,
@@ -126,20 +127,20 @@ class AnimatedSplashScreen extends StatefulWidget {
   }
 
   AnimatedSplashScreen._internal({
-    @required this.animationDuration,
-    @required this.splashTransition,
-    @required this.customAnimation,
-    @required this.backgroundColor,
-    @required this.transitionType,
-    @required this.splashIconSize,
-    @required this.nextScreen,
-    @required this.function,
-    @required this.duration,
-    @required this.centered,
-    @required this.disableNavigation,
-    @required this.splash,
-    @required this.curve,
-    @required this.type,
+    required this.animationDuration,
+    required this.splashTransition,
+    required this.customAnimation,
+    required this.backgroundColor,
+    required this.transitionType,
+    required this.splashIconSize,
+    required this.nextScreen,
+    required this.function,
+    required this.duration,
+    required this.centered,
+    required this.disableNavigation,
+    required this.splash,
+    required this.curve,
+    required this.type,
   })  : assert(duration != null, 'Duration cannot be null'),
         assert(transitionType != null, 'TransitionType cannot be null'),
         assert(splashTransition != null, 'SplashTransition cannot be null'),
@@ -151,9 +152,9 @@ class AnimatedSplashScreen extends StatefulWidget {
 
 class _AnimatedSplashScreenState extends State<AnimatedSplashScreen>
     with SingleTickerProviderStateMixin {
-  AnimationController _animationController;
-  static BuildContext _context;
-  Animation _animation;
+  late AnimationController _animationController;
+  static late BuildContext _context;
+  late Animation _animation;
 
   AnimatedSplashScreen get w => widget;
 
@@ -182,7 +183,7 @@ class _AnimatedSplashScreenState extends State<AnimatedSplashScreen>
             default:
               return Tween(begin: 0.0, end: 1.0);
           }
-        }();
+        }() as Animatable<dynamic>;
 
     _animation = animation
         .animate(CurvedAnimation(parent: _animationController, curve: w.curve));
@@ -192,7 +193,7 @@ class _AnimatedSplashScreenState extends State<AnimatedSplashScreen>
   /// call function case needed and then jump to next screen
   doTransition() async {
     if (w.type == _splashType.backgroundScreenReturn)
-      navigator(await w.function());
+      navigator(await w.function!());
     else if (!w.disableNavigation) navigator(w.nextScreen);
   }
 
@@ -222,7 +223,7 @@ class _AnimatedSplashScreenState extends State<AnimatedSplashScreen>
     final size =
         w.splashIconSize ?? MediaQuery.of(context).size.shortestSide * 0.2;
 
-    Widget main({@required Widget child}) =>
+    Widget main({required Widget child}) =>
         w.centered ? Center(child: child) : child;
 
     return getTransition(
@@ -243,7 +244,7 @@ class _AnimatedSplashScreenState extends State<AnimatedSplashScreen>
   }
 
   /// return transtion
-  Widget getTransition({@required Widget child}) {
+  Widget getTransition({required Widget child}) {
     switch (w.splashTransition) {
       case SplashTransition.slideTransition:
         return SlideTransition(
