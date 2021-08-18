@@ -254,37 +254,30 @@ class _AnimatedSplashScreenState extends State<AnimatedSplashScreen>
       case SplashTransition.slideTransition:
         return SlideTransition(
             position: (_animation as Animation<Offset>), child: child);
-        break;
 
       case SplashTransition.scaleTransition:
         return ScaleTransition(
             scale: (_animation as Animation<double>), child: child);
-        break;
 
       case SplashTransition.rotationTransition:
         return RotationTransition(
             turns: (_animation as Animation<double>), child: child);
-        break;
 
       case SplashTransition.sizeTransition:
         return SizeTransition(
             sizeFactor: (_animation as Animation<double>), child: child);
-        break;
 
       case SplashTransition.fadeTransition:
         return FadeTransition(
             opacity: (_animation as Animation<double>), child: child);
-        break;
 
       case SplashTransition.decoratedBoxTransition:
         return DecoratedBoxTransition(
             decoration: (_animation as Animation<Decoration>), child: child);
-        break;
 
       default:
         return FadeTransition(
             opacity: (_animation as Animation<double>), child: child);
-        break;
     }
   }
 
