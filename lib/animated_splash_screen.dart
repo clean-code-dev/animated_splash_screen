@@ -22,8 +22,9 @@ class AnimatedSplashScreen extends StatefulWidget {
   /// Type of splash transition
   final SplashTransition splashTransition;
 
-  /// Only required case use [AnimatedSplashScreen.withScreenFunction]
-  /// here you pass your function that need called before to jump to next screen
+  /// Only required while using [AnimatedSplashScreen.withScreenFunction]
+  /// here you pass your function that needs to be called before jumping
+  /// on to the next screen
   final Future Function()? function;
 
   /// Custom animation to icon of splash
@@ -32,19 +33,19 @@ class AnimatedSplashScreen extends StatefulWidget {
   /// Background color
   final Color backgroundColor;
 
-  /// Only required in default construct, here you pass your widget that will be
-  /// browsed
+  /// Compulsory in default constructor.
+  /// Here you pass your widget that will be browsed
   final Widget? nextScreen;
 
   /// Type of AnimatedSplashScreen
   final _splashType type;
 
-  /// If icon in splash need stay inside [Center] widget
+  /// to make the icon in [Center] of splash
   final bool centered;
 
   /// If you want to implement the navigation to the next page yourself.
-  /// By default is [false], the widget will call Navigator.of(_context).pushReplacement()
-  /// using PageTransition with [transictionType] after [duration] to [nextScreen]
+  /// By default this is [false], the widget will call Navigator.of(_context).pushReplacement()
+  /// using PageTransition with [transitionType] after [duration] to [nextScreen]
   final bool disableNavigation;
 
   /// It can be string for [Image.asserts], normal [Widget] or you can user tags
@@ -62,68 +63,72 @@ class AnimatedSplashScreen extends StatefulWidget {
   /// Splash animation duration, default is [milliseconds: 800]
   final Duration? animationDuration;
 
-  /// Icon in splash screen size
+  /// Size of an icon in splash screen
   final double? splashIconSize;
 
-  factory AnimatedSplashScreen(
-      {Curve curve = Curves.easeInCirc,
-      Future Function()? function,
-      int duration = 2500,
-      required dynamic splash,
-      required Widget nextScreen,
-      Color backgroundColor = Colors.white,
-      Animatable? customTween,
-      bool centered = true,
-      bool disableNavigation = false,
-      SplashTransition? splashTransition,
-      PageTransitionType? pageTransitionType,
-      Duration? animationDuration,
-      double? splashIconSize}) {
+  factory AnimatedSplashScreen({
+    Curve curve = Curves.easeInCirc,
+    Future Function()? function,
+    int duration = 2500,
+    required dynamic splash,
+    required Widget nextScreen,
+    Color backgroundColor = Colors.white,
+    Animatable? customTween,
+    bool centered = true,
+    bool disableNavigation = false,
+    SplashTransition? splashTransition,
+    PageTransitionType? pageTransitionType,
+    Duration? animationDuration,
+    double? splashIconSize,
+  }) {
     return AnimatedSplashScreen._internal(
-        backgroundColor: backgroundColor,
-        animationDuration: animationDuration,
-        transitionType: pageTransitionType ?? PageTransitionType.bottomToTop,
-        splashTransition: splashTransition ?? SplashTransition.fadeTransition,
-        splashIconSize: splashIconSize,
-        customAnimation: customTween,
-        function: function,
-        duration: duration,
-        centered: centered,
-        disableNavigation: disableNavigation,
-        splash: splash,
-        type: _splashType.simpleSplash,
-        nextScreen: nextScreen,
-        curve: curve);
+      backgroundColor: backgroundColor,
+      animationDuration: animationDuration,
+      transitionType: pageTransitionType ?? PageTransitionType.bottomToTop,
+      splashTransition: splashTransition ?? SplashTransition.fadeTransition,
+      splashIconSize: splashIconSize,
+      customAnimation: customTween,
+      function: function,
+      duration: duration,
+      centered: centered,
+      disableNavigation: disableNavigation,
+      splash: splash,
+      type: _splashType.simpleSplash,
+      nextScreen: nextScreen,
+      curve: curve,
+    );
   }
 
-  factory AnimatedSplashScreen.withScreenFunction(
-      {Curve curve = Curves.easeInCirc,
-      bool centered = true,
-      bool disableNavigation = false,
-      int duration = 2500,
-      required dynamic splash,
-      required Future<Widget> Function() screenFunction,
-      Animatable? customTween,
-      Color backgroundColor = Colors.white,
-      SplashTransition? splashTransition,
-      PageTransitionType? pageTransitionType,
-      Duration? animationDuration,
-      double? splashIconSize}) {
+  factory AnimatedSplashScreen.withScreenFunction({
+    Curve curve = Curves.easeInCirc,
+    bool centered = true,
+    bool disableNavigation = false,
+    int duration = 2500,
+    required dynamic splash,
+    required Future<Widget> Function() screenFunction,
+    Animatable? customTween,
+    Color backgroundColor = Colors.white,
+    SplashTransition? splashTransition,
+    PageTransitionType? pageTransitionType,
+    Duration? animationDuration,
+    double? splashIconSize,
+  }) {
     return AnimatedSplashScreen._internal(
-        type: _splashType.backgroundScreenReturn,
-        animationDuration: animationDuration,
-        transitionType: pageTransitionType ?? PageTransitionType.bottomToTop,
-        splashTransition: splashTransition ?? SplashTransition.fadeTransition,
-        backgroundColor: backgroundColor,
-        splashIconSize: splashIconSize,
-        customAnimation: customTween,
-        function: screenFunction,
-        duration: duration,
-        centered: centered,
-        disableNavigation: disableNavigation,
-        nextScreen: null,
-        splash: splash,
-        curve: curve);
+      type: _splashType.backgroundScreenReturn,
+      animationDuration: animationDuration,
+      transitionType: pageTransitionType ?? PageTransitionType.bottomToTop,
+      splashTransition: splashTransition ?? SplashTransition.fadeTransition,
+      backgroundColor: backgroundColor,
+      splashIconSize: splashIconSize,
+      customAnimation: customTween,
+      function: screenFunction,
+      duration: duration,
+      centered: centered,
+      disableNavigation: disableNavigation,
+      nextScreen: null,
+      splash: splash,
+      curve: curve,
+    );
   }
 
   AnimatedSplashScreen._internal({
@@ -141,7 +146,7 @@ class AnimatedSplashScreen extends StatefulWidget {
     required this.splash,
     required this.curve,
     required this.type,
-  })   : assert(duration != null, 'Duration cannot be null'),
+  })  : assert(duration != null, 'Duration cannot be null'),
         assert(transitionType != null, 'TransitionType cannot be null'),
         assert(splashTransition != null, 'SplashTransition cannot be null'),
         assert(curve != null, 'Curve cannot be null');
@@ -249,37 +254,30 @@ class _AnimatedSplashScreenState extends State<AnimatedSplashScreen>
       case SplashTransition.slideTransition:
         return SlideTransition(
             position: (_animation as Animation<Offset>), child: child);
-        break;
 
       case SplashTransition.scaleTransition:
         return ScaleTransition(
             scale: (_animation as Animation<double>), child: child);
-        break;
 
       case SplashTransition.rotationTransition:
         return RotationTransition(
             turns: (_animation as Animation<double>), child: child);
-        break;
 
       case SplashTransition.sizeTransition:
         return SizeTransition(
             sizeFactor: (_animation as Animation<double>), child: child);
-        break;
 
       case SplashTransition.fadeTransition:
         return FadeTransition(
             opacity: (_animation as Animation<double>), child: child);
-        break;
 
       case SplashTransition.decoratedBoxTransition:
         return DecoratedBoxTransition(
             decoration: (_animation as Animation<Decoration>), child: child);
-        break;
 
       default:
         return FadeTransition(
             opacity: (_animation as Animation<double>), child: child);
-        break;
     }
   }
 
