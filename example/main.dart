@@ -10,14 +10,12 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
         title: 'Clean Code',
         home: AnimatedSplashScreen(
-          duration: 3000,
-          splash: Icons.home,
-          nextScreen: MainScreen(),
-          splashTransition: SplashTransition.fadeTransition,
-          pageTransitionType: PageTransitionType.scale,
-          backgroundColor: Colors.blue
-        )
-    );
+            duration: 3000,
+            splash: Icons.home,
+            nextScreen: MainScreen(),
+            splashTransition: SplashTransition.fadeTransition,
+            pageTransitionType: PageTransitionType.scale,
+            backgroundColor: Colors.blue));
   }
 }
 

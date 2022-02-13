@@ -1,7 +1,6 @@
 library animated_splash_screen;
 
 import 'package:flutter/material.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:page_transition/page_transition.dart';
 
 enum _splashType { simpleSplash, backgroundScreenReturn }
@@ -146,10 +145,7 @@ class AnimatedSplashScreen extends StatefulWidget {
     required this.splash,
     required this.curve,
     required this.type,
-  })  : assert(duration != null, 'Duration cannot be null'),
-        assert(transitionType != null, 'TransitionType cannot be null'),
-        assert(splashTransition != null, 'SplashTransition cannot be null'),
-        assert(curve != null, 'Curve cannot be null');
+  });
 
   @override
   _AnimatedSplashScreenState createState() => _AnimatedSplashScreenState();

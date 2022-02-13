@@ -1,3 +1,5 @@
+## [1.2.0] - Update Dependencies
+
 ## [1.0.1+2] - Fix
 * Fix "Pass static analysis" issues
 
