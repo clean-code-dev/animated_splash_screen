@@ -1,3 +1,6 @@
+## [1.3.0] - Add feature
+* Added possibility to pass a route instead of a widget.
+
 ## [1.2.0] - Update Dependencies
 
 ## [1.0.1+2] - Fix
