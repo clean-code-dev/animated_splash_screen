@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 
 enum SplashType { simpleSplash, backgroundScreenReturn }
+
 enum SplashTransition {
   slideTransition,
   scaleTransition,
@@ -250,8 +251,10 @@ class _AnimatedSplashScreenState extends State<AnimatedSplashScreen>
         if (screen is String) {
           Navigator.of(_context).pushReplacementNamed(screen);
         } else {
-          Navigator.of(_context).pushReplacement(
-              PageTransition(type: w.transitionType, child: screen));
+          Navigator.of(_context).pushReplacement(PageTransition(
+              type: w.transitionType,
+              child: screen,
+              alignment: Alignment.topCenter));
         }
       } catch (msg) {
         print('AnimatedSplashScreen -> '
