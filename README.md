@@ -93,3 +93,10 @@ Here you can do something that will return your next screen, ex:
       splashTransition: SplashTransition.rotationTransition,
       pageTransitionType: PageTransitionType.scale,
     )
+## Misc:
+To prevent splash from getting cut off: 
+use 
+```dart
+AnimatedSplashScreen(
+    splashIconSize: double.infinity,
+```
