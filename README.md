@@ -98,5 +98,5 @@ To prevent splash from getting cut off:
 use 
 ```dart
 AnimatedSplashScreen(
+    splashIconSize: double.infinity,
 ```
-                splashIconSize: double.infinity,
